@@ -263,6 +263,100 @@ Proactive cost-containment measures include:
 
 const INITIAL_REPORTS: BlogPost[] = [
   {
+    id: 'report-education-growth',
+    title: 'Education Expenditure & India’s Economic Growth: A Cointegration & VECM Analysis',
+    category: 'Macroeconomics',
+    summary: 'An empirical time-series analysis exploring the long-run causal relationship between public educational spending and GDP growth in India from 1980 to 2015 using Johansen Cointegration and VECM.',
+    content: `## Executive Summary
+This paper evaluates the empirical relationship between spending on education by the government of India and its resulting economic growth from 1980 to 2015. Utilizing times-series econometric tools—including Ordinary Least Squares (OLS), Augmented Dickey-Fuller (ADF) unit root testing, Vector Autoregression (VAR), Johansen Cointegration, and Vector Error Correction Model (VECM)—we isolate the long-run equilibrium and causality dynamics between these key macroeconomic indicators.
+
+---
+
+## 1. Introduction & Theoretical Context
+Adam Smith identified education and human capital formation as primary engines of economic expansion. On a microeconomic level, educational attainment correlates directly with higher wage premiums. On a macroeconomic scale, tracing this relationship requires isolating whether increased national wealth drives higher social spending, or whether education expenditure acts as a primary causal input for overall GDP growth.
+
+This study implements a rigorous empirical framework to determine if the relationship is bi-directional, unidirectional, or non-causal, using Indian macroeconomic data spanning 36 annual periods.
+
+---
+
+## 2. Ordinary Least Squares (OLS) Baseline
+An initial OLS regression was conducted to establish a baseline correlation between the log of GDP (\`lgdp\`) and the log of education expenditure (\`ledu\`).
+
+### Regression Model A (Dependent Variable: \`lgdp\`)
+$$LnGDP_t = \\alpha + \\beta \\cdot LnEDU_t + \\epsilon_t$$
+- **Coefficient (\\beta):** 0.8475 (t-stat = 15.52, p < 0.000)
+- **R-squared (R²):** 0.8763 (Adj R² = 0.8727)
+- **F-statistic:** 240.85 (Prob > F = 0.0000)
+
+### Regression Model B (Dependent Variable: \`ledu\`)
+$$LnEDU_t = \\alpha + \\beta \\cdot LnGDP_t + \\epsilon_t$$
+- **Coefficient (\\beta):** 1.0339 (t-stat = 15.52, p < 0.000)
+- **R-squared (R²):** 0.8763 (Adj R² = 0.8727)
+
+*Analysis:* Both models display highly significant statistical relationships ($p < 0.05$). The baseline correlation indicates a positive relationship between economic growth and educational investment.
+
+---
+
+## 3. Unit Root Testing & Stationarity
+Macroeconomic time-series data is frequently non-stationary in levels, which can lead to spurious regressions. We apply the Augmented Dickey-Fuller (ADF) test with a trend and constant:
+
+$$\\Delta y_t = \\beta_1 + \\beta_2 t + \\alpha y_{t-1} + \\gamma \\sum \\Delta y_{t-1} + \\epsilon_t$$
+
+### ADF Unit Root Results (Levels)
+- **Log of GDP (\`lgdp\`):** ADF Statistic = -1.382 (5% Critical Value = -3.564, p-value = 0.8662)
+- **Log of Education Expenditure (\`ledu\`):** ADF Statistic = -3.058 (5% Critical Value = -3.564, p-value = 0.1165)
+
+*Analysis:* For both variables, the absolute test statistics are lower than the 5% critical values. We cannot reject the null hypothesis of a unit root (non-stationarity) in levels.
+
+---
+
+## 4. Lag Selection & Vector Autoregression (VAR)
+To evaluate the dynamic properties, we perform lag selection using the \`varsoc\` criteria in STATA on \`GDPinbillions\` and \`eduexpinbillions\`.
+
+### Selection-Order Criteria (1984 - 2015)
+- **Optimal Lag:** 1 lag is selected as optimal across LR, FPE, AIC, HQIC, and SBIC indicators.
+
+### Vector Autoregression (VAR) Model at Lag 1
+- **\`lgdp\` Equation:** R² = 0.9902, RMSE = 0.0792
+- **\`ledu\` Equation:** R² = 0.8699, RMSE = 0.3184
+- **Impact Coeffs:**
+  - L1.lgdp -> lgdp: 1.0067 (z = 21.50, p < 0.000)
+  - L1.lgdp -> ledu: 1.0330 (z = 5.49, p < 0.000)
+
+*Analysis:* Both variables display positive momentum at the first lag, validating the suitability of a vector-based dynamic system.
+
+---
+
+## 5. Johansen Cointegration & VECM
+Since the variables are non-stationary but share dynamic structures, we run a Johansen Cointegration test to identify if they share a long-run equilibrium.
+
+### Cointegration Rank Test (Trace & Max-Eigenvalue)
+- **Rank = 0 (Null):** Trace Stat = 25.5197 > 5% Critical Value (15.41); Max-Eigen Stat = 24.2333 > 5% Critical Value (14.07).
+- **Rank = 1:** Trace Stat = 1.2864 < 5% Critical Value (3.76).
+
+*Conclusion:* We reject Rank = 0 and accept Rank = 1. There exists exactly one cointegrating equation, confirming a long-run relationship.
+
+### Vector Error Correction Model (VECM) Equation
+$$\\text{Normalized Cointegrating Equation: } _ce1 = lgdp_t - 1.0098 \\cdot ledu_t - 3.4281$$
+
+*Analysis:* Reversing the signs indicates that the log of education expenditure (\`ledu\`) has a long-run positive coefficient of **1.0098** on the log of GDP (\`lgdp\`). A 1% increase in education expenditure corresponds to a long-run GDP increase of approximately 1.01%.
+
+---
+
+## 6. Policy Recommendations & Limitations
+1. **Budget Allocation:** Reforming and developing the educational system is crucial. Government budgets should prioritize high-quality teaching, training programs, and infrastructure upgrades.
+2. **Technological Modernization:** Deploying advanced learning technologies in the social sector can dramatically scale educational efficiency and reach.
+3. **Reducing Inequality:** Broadening educational access across rural and low-income demographics reduces social disparities and stimulates long-term economic returns.
+
+### Limitations
+This two-variable model does not capture other key inputs to economic growth (e.g. physical capital, health index, labor force participation). Additionally, it uses total financial expenditure and cannot distinguish between the quantity of education (years completed) and the quality of education (learning outcomes).`,
+    date: 'May 26, 2026',
+    readingTime: '8 min read',
+    author: 'Hariharan Balaji',
+    tags: ['Macroeconomics', 'Econometrics', 'VECM', 'Johansen Cointegration', 'India GDP'],
+    metrics: 'Cointegrating Rank = 1, R² (GDP) = 0.99'
+  },
+  {
     id: 'report-cx-market',
     title: 'CX Support: Market Annual Report – SaaS Giants, Volatility Clusters & Pricing Disruption',
     category: 'Quantitative Research',

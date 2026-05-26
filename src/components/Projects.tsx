@@ -2,6 +2,12 @@ import { motion } from 'motion/react';
 
 const projects = [
   {
+    title: "Education Expenditure & India's Economic Growth",
+    description: "An empirical econometric investigation modeling the causality between government spending on education and India's economic growth (1980–2015). Leveraging Johansen Cointegration, VAR, and Vector Error Correction Model (VECM) architectures to determine long-run equilibrium relationships.",
+    tags: ["Econometrics", "STATA", "VECM Model", "Macroeconomics"],
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2622&auto=format&fit=crop"
+  },
+  {
     title: "Human Development Index (HDI) Strategic Analysis",
     description: "Thesis exploring strategic development planning through historical data comparison of low and high-income nations. Utilizing Panel Regression and Variance Analysis, this research has been cited over 100 times in other publications.",
     tags: ["RStudio", "Panel Regression", "Thesis"],
